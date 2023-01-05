@@ -1,0 +1,56 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  font-family: sans-serif;
+  height: 100vh;
+  background: whitesmoke;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background: white;
+  width: 900px;
+  height: 600px;
+  border-radius: 20px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.image-container {
+
+}
+
+.image-container > img {
+  height: 400px;
+  width: auto;
+  object-fit: contain;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.form-title {
+  flex: 1;
+  display: block;
+  text-align: center;
+}
+
+.input-container {
+  /* flex: 50%; */
+  margin: 15px 30px;
+}
+
+.input-container input:focus {
+  outline: none;
+}
