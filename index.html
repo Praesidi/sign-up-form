@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <link rel="icon" id="favicon" href="img/favicon.png" /> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="default-style.css" />
     <link rel="stylesheet" href="style.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -21,46 +24,58 @@
       <!-- Sign Up Card -->
       <div class="card-container" data-aos="zoom-out-up">
         <!-- Image Container -->
-        <div class="image-container">
+        <div class="image-container" data-aos="fade-right">
           <img src="img/image1.jpg" alt="Sign Up Illustration">
         </div>
         <!-- Form Container -->
-        <div class="form-container">
+        <div class="form-container" data-aos="fade-left">
           <!-- Title -->
           <h1 class="form-title">Sign Up</h1>
           <!-- Form -->
           <form action="">
             <div class="input-container">
-              <label for="first-name">First Name</label>
-              <input type="text" id="first-name">
+              <i class="fa-solid fa-user"></i>
+              <label for="full-name">Full Name</label>
+              <input type="text" id="full-name">
             </div>
             <div class="input-container">
-              <label for="last-name">Last Name</label>
-              <input type="text" id="last-name">
-            </div>
-            <div class="input-container">
+              <i class="fa-solid fa-envelope"></i>
               <label for="email">Email</label>
               <input type="text" id="email">
             </div>
             <div class="input-container">
+              <i class="fa-solid fa-mobile-screen-button"></i>
               <label for="phone">Phone</label>
               <input type="text" id="phone">
             </div>
-            <div class="input-container">
+            <!-- Password -->
+            <div class="input-container tooltip">
+              <i class="fa-solid fa-lock"></i>
               <label for="password1">Password</label>
               <input type="text" id="password1">
+              <div class="tooltiptext">
+                <p>To provide maximum security your password must:</p>
+                <ul>
+                  <li>Have at least 8 characters</li>
+                  <li>Have at least one lowercase character</li>
+                  <li>Have at least one uppercase character</li>
+                  <li>Have at least one number</li>
+                  <li>Have at least one special character from the following list (!@#$%^&*)</li>
+                </ul>
+              </div>
             </div>
             <div class="input-container">
+              <i class="fa-solid fa-key"></i>
               <label for="password2">Confirm Password</label>
               <input type="text" id="password2">
             </div>
-            <div class="input-container">
+            <div class="agreement-container">
               <label for="agreement">
-                <input type="checkbox" id="agreement">
+                <input type="checkbox" id="agreement" checked>
                 I agree to the all statements in <a class="link" href="">Terms of service</a>.
               </label>
             </div>
-            <div class="input-container">
+            <div class="button-container">
               <button type="submit">Sign Up</button>
             </div>
           </form>
