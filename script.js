@@ -1,31 +1,26 @@
-//keep label on top if input is not empty
 //fix layout for mobile devices
-//change position for password's tooltip on mobile devices
+//somehow show a message to user if passwords not matching
 
 const password1Element = document.getElementById('password1');
 const password2Element = document.getElementById('password2');
 const termsCheckbox = document.getElementById('agreement');
 const form = document.getElementById('form');
 const submitBtn = document.getElementById('submitBtn');
+const inputs = document.querySelectorAll('input');
 
 let passwordsMatch = false;
 let isValid = false;
 
-function checkTermsAgreement() {
-  if (termsCheckbox.checked){
-    submitBtn.disabled = false;
-  } else {
-    submitBtn.disabled = true;
-  }
-}
-
 function validateForm() {
+  isValid = form.checkValidity();
+
   if (password1Element.value === password2Element.value){
     passwordsMatch = true;
     password1Element.style.borderColor = '#4caf50';
     password2Element.style.borderColor = '#4caf50';
   } else {
     passwordsMatch = false; 
+    alert('Passwords must match');
     password1Element.style.borderColor = '#f44336';
     password2Element.style.borderColor = '#f44336';
     return; 
@@ -39,6 +34,7 @@ function storeFormData(){
     phone: form.phone.value,
     password: form.password.value,
   };
+  console.log(user);
 }
 
 function processFormData(e){
@@ -56,6 +52,23 @@ termsCheckbox.onchange = function(){
     submitBtn.disabled = true;
   }
 };
+
+const passwordInputs = [password1Element, password2Element];
+const passwordPattern = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/i;
+
+passwordInputs.forEach ((input) => {      //check passwords irl for better UX
+  input.addEventListener('change', () => {
+    if (passwordPattern.test(password1Element.value) && passwordPattern.test(password2Element.value))
+
+    if (password1Element.value !== password2Element.value){
+      password1Element.style.borderColor = '#f44336';
+      password2Element.style.borderColor = '#f44336';
+    } else {
+      password1Element.style.borderColor = '#4caf50';
+      password2Element.style.borderColor = '#4caf50';
+    }
+  })
+});
 
 form.addEventListener('submit', processFormData);
 
