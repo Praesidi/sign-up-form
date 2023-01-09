@@ -20,8 +20,10 @@ body {
   padding: 30px;
   margin: 20px;
   background: white;
-  max-width: 840px; /*delete if not needed*/
+  max-width: 840px;
   min-height: 540px;
+  /* width: 840px; 
+  height: 540px; */
   border-radius: 20px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
@@ -53,7 +55,7 @@ body {
 } 
 
 .input-container input {
-  margin-right: 55px;
+  margin-right: 55px; /*change for mobile devices*/
   width: 280px;
   border-radius: 7px;
   border: 1px solid #c1c1c1;
@@ -160,3 +162,38 @@ button:disabled {
   visibility: visible;
   opacity: 1;
 }
+
+@media screen and (max-width: 900px) {
+  .card-container {
+    max-width: 90%;
+    min-height: 100%;
+    margin: 15px;
+  }
+
+  .image-container > img {
+    height: 300px;
+    margin: 0;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .input-container i{
+    position: relative;
+    left: 20px;
+  }
+
+  .input-container input {
+    margin: auto;
+  } 
+
+  .input-container label {
+    left: 60px;
+  }
+}
+
+/* @media screen and (max-width: 480px) {
+  .card-container {
+    max-width: 90%;
+    min-height: 100%;
+  }
+} */
