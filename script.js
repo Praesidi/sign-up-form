@@ -1,6 +1,3 @@
-//fix layout for mobile devices
-//somehow show a message to user if passwords not matching
-
 const password1Element = document.getElementById('password1');
 const password2Element = document.getElementById('password2');
 const termsCheckbox = document.getElementById('agreement');

@@ -4,31 +4,33 @@ html {
 
 body {
   display: flex;
-  font-family: 'Inter', sans-serif;
-  height: 100vh;
-  background: whitesmoke;
   align-items: center;
   justify-content: center;
+  font-family: 'Inter', sans-serif;
+  height: 100vh;
+  overflow-x: hidden; 
+  background: whitesmoke;
 }
 
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   padding: 30px;
   margin: 20px;
   background: white;
-  max-width: 840px;
+  max-width: 840px; /*need to fix*/
   min-height: 540px;
-  /* width: 840px; 
-  height: 540px; */
   border-radius: 20px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
-.image-container > img {
+.image-container {
+
+}
+
+.image-container img {
   height: 400px;
   width: auto;
   object-fit: contain;
@@ -162,38 +164,3 @@ button:disabled {
   visibility: visible;
   opacity: 1;
 }
-
-@media screen and (max-width: 900px) {
-  .card-container {
-    max-width: 90%;
-    min-height: 100%;
-    margin: 15px;
-  }
-
-  .image-container > img {
-    height: 300px;
-    margin: 0;
-    width: auto;
-    object-fit: contain;
-  }
-
-  .input-container i{
-    position: relative;
-    left: 20px;
-  }
-
-  .input-container input {
-    margin: auto;
-  } 
-
-  .input-container label {
-    left: 60px;
-  }
-}
-
-/* @media screen and (max-width: 480px) {
-  .card-container {
-    max-width: 90%;
-    min-height: 100%;
-  }
-} */
