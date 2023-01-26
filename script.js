@@ -21,7 +21,7 @@ function validateForm() {
   if (passwordsMatch = false){
     alert('Passwords must match');
   }
-  }
+}
 
 //check password to fit requirements 
 function validatePassword(password){
@@ -56,7 +56,8 @@ function handleValidatePassword(){
     b.style.borderColor = greenColor;
   }
   
-  if ((a.value !== b.value) && (validatePassword(a.value) && validatePassword(b.value))){
+  if ((a.value !== "" && b.value !== "") && (a.value !== b.value 
+    || !(validatePassword(a.value) && validatePassword(b.value)))){
     a.style.borderColor = redColor;
     b.style.borderColor = redColor;
   }
