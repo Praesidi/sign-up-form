@@ -3,7 +3,6 @@ const secondPasswordElement = document.getElementById('password2');
 const termsCheckbox = document.getElementById('agreement');
 const form = document.getElementById('form');
 const submitBtn = document.getElementById('submitBtn');
-const inputs = document.querySelectorAll('input');
 
 const passwordInputs = [firstPasswordElement, secondPasswordElement];
 const greenColor = '#4caf50';
@@ -21,7 +20,7 @@ function validateForm() {
   if (passwordsMatch = false){
     alert('Passwords must match');
   }
-  }
+}
 
 //check password to fit requirements 
 function validatePassword(password){
@@ -56,7 +55,8 @@ function handleValidatePassword(){
     b.style.borderColor = greenColor;
   }
   
-  if ((a.value !== b.value) && (validatePassword(a.value) && validatePassword(b.value))){
+  if ((a.value !== "" && b.value !== "") && (a.value !== b.value 
+    || !(validatePassword(a.value) && validatePassword(b.value)))){
     a.style.borderColor = redColor;
     b.style.borderColor = redColor;
   }
