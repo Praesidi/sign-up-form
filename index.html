@@ -71,6 +71,7 @@
             <label for="phone">Phone</label>
           </div>
           <!-- Password -->
+          <!-- pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" -->
           <div class="input-container tooltip">
             <i class="fa-solid fa-lock"></i>
             <input 
@@ -78,7 +79,7 @@
               id="password1"
               name="password"
               autocomplete="new-password"
-              pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" 
+              pattern="" 
               placeholder=" "
               required
             >
@@ -86,11 +87,11 @@
             <div class="tooltiptext">
               <p>To provide maximum security your password must:</p>
               <ul>
-                <li>Have at least 8 characters</li>
+                <li>Have to consist of 8-24 characters</li>
                 <li>Have at least one lowercase character</li>
                 <li>Have at least one uppercase character</li>
                 <li>Have at least one number</li>
-                <li>Password can contain special characters from the following list (!@#$%^&*)</li>
+                <li>Have at least one special characters from the following list (!@#$%^&*)</li>
               </ul>
             </div>
           </div>
@@ -101,7 +102,7 @@
               type="password" 
               id="password2" 
               autocomplete="new-password"
-              pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" 
+              pattern="" 
               placeholder=" "
               required
             >
