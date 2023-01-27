@@ -14,7 +14,7 @@ let isFormValid = false;
 let isPasswordValid = false;
 
 function validateForm() {
-  isFormValid = form.checkValidity();
+  isFormValid = form.checkValidity(); //fix passwords validation
 
   handleValidatePassword();
   if (passwordsMatch = false){
@@ -22,7 +22,7 @@ function validateForm() {
   }
 }
 
-//check password to fit requirements 
+//check passwords to fit requirements 
 function validatePassword(password){
   isPasswordValid = false;
   let passwordPattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*]).{8,16}$/;
@@ -39,12 +39,15 @@ function handleValidatePassword(){
   let b = secondPasswordElement;
   passwordsMatch = false;
 
-  if (validatePassword(a) && b.value === ""){
+  console.log(validatePassword(a))
+
+
+  if (validatePassword(a.value) && b.value === ""){
     a.style.borderColor = greenColor;
     b.style.borderColor = defaultColor;
   } 
 
-  if (!validatePassword(a) && b.value === ""){
+  if (!validatePassword(a.value) && b.value === ""){
     a.style.borderColor = redColor;
     b.style.borderColor = defaultColor;
   }
