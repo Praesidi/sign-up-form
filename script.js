@@ -10,16 +10,18 @@ const redColor = '#f44336';
 const defaultColor = '#c1c1c1';
 
 let passwordsMatch = false;
-let isFormValid = false;
 let isPasswordValid = false;
+let areInputsValid = false;
 
-function validateForm() {
-  isFormValid = form.checkValidity(); //fix passwords validation
-
-  handleValidatePassword();
-  if (passwordsMatch = false){
-    alert('Passwords must match');
-  }
+function validateInputs(){
+  areInputsValid = true;
+  let inputs = [form.name, form.email, form.phone];
+  inputs.forEach ((input) => {
+    if (!input.checkValidity()){
+      areInputsValid = false;
+    }
+  })
+  return areInputsValid;
 }
 
 //check passwords to fit requirements 
@@ -38,9 +40,6 @@ function handleValidatePassword(){
   let a = firstPasswordElement;
   let b = secondPasswordElement;
   passwordsMatch = false;
-
-  console.log(validatePassword(a))
-
 
   if (validatePassword(a.value) && b.value === ""){
     a.style.borderColor = greenColor;
@@ -94,9 +93,18 @@ function storeFormData(){
 
 function processFormData(e){
   e.preventDefault();
-  validateForm();
-  if (isFormValid && passwordsMatch){
+  validateInputs();
+  handleValidatePassword();
+
+  if (!passwordsMatch){
+    alert('Passwords must match');
+  }
+  
+  if (areInputsValid && passwordsMatch){
     storeFormData();
+    console.log('Success (╯•ω•╰)');
+  } else {
+    alert('Something went wrong (⊙＿⊙’)');
   }
 }
 
@@ -109,8 +117,12 @@ termsCheckbox.onchange = function(){
 };
 
 passwordInputs.forEach((input) => {
-  input.addEventListener('focusout', handleEmptyPasswords);
+  input.addEventListener('focusout', () => {
+    input.setAttribute('type', 'password'); //show password when input is selected
+    handleEmptyPasswords();
+  });
   input.addEventListener('focusin', () => {
+    input.setAttribute('type', 'text'); //hide password when input is not selected
     handleEmptyPasswords();
     moveFocus();
   });
