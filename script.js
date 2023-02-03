@@ -13,75 +13,86 @@ let passwordsMatch = false;
 let isPasswordValid = false;
 let areInputsValid = false;
 
-function validateInputs(){
+function validateInputs() {
   areInputsValid = true;
-  let inputs = [form.name, form.email, form.phone];
-  inputs.forEach ((input) => {
-    if (!input.checkValidity()){
+  const inputs = [form.name, form.email, form.phone];
+  inputs.forEach((input) => {
+    if (!input.checkValidity()) {
       areInputsValid = false;
     }
-  })
+  });
   return areInputsValid;
 }
 
-//check passwords to fit requirements 
-function validatePassword(password){
+// check passwords to fit requirements
+function validatePassword(password) {
   isPasswordValid = false;
-  let passwordPattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*]).{8,16}$/;
+  const passwordPattern =
+    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*]).{8,16}$/;
 
-  if(passwordPattern.test(password) && !(/\s/.test(password))){
+  if (passwordPattern.test(password) && !/\s/.test(password)) {
     isPasswordValid = true;
   }
   return isPasswordValid;
 }
 
-//check both passwords
-function handleValidatePassword(){
-  let a = firstPasswordElement;
-  let b = secondPasswordElement;
+// check both passwords
+function handleValidatePassword() {
+  const a = firstPasswordElement;
+  const b = secondPasswordElement;
   passwordsMatch = false;
 
-  if (validatePassword(a.value) && b.value === ""){
+  if (validatePassword(a.value) && b.value === '') {
     a.style.borderColor = greenColor;
     b.style.borderColor = defaultColor;
-  } 
+  }
 
-  if (!validatePassword(a.value) && b.value === ""){
+  if (!validatePassword(a.value) && b.value === '') {
     a.style.borderColor = redColor;
     b.style.borderColor = defaultColor;
   }
 
-  if ((a.value === b.value) && (validatePassword(a.value) && validatePassword(b.value))){
+  if (
+    a.value === b.value &&
+    validatePassword(a.value) &&
+    validatePassword(b.value)
+  ) {
     passwordsMatch = true;
     a.style.borderColor = greenColor;
     b.style.borderColor = greenColor;
   }
-  
-  if ((a.value !== "" && b.value !== "") && (a.value !== b.value 
-    || !(validatePassword(a.value) && validatePassword(b.value)))){
+
+  if (
+    a.value !== '' &&
+    b.value !== '' &&
+    (a.value !== b.value ||
+      !(validatePassword(a.value) && validatePassword(b.value)))
+  ) {
     a.style.borderColor = redColor;
     b.style.borderColor = redColor;
   }
 }
 
-//don't change border-colors if inputs are empty
-function handleEmptyPasswords(){
-  if (firstPasswordElement.value === "" && secondPasswordElement.value === ""){
+// don't change border-colors if inputs are empty
+function handleEmptyPasswords() {
+  if (firstPasswordElement.value === '' && secondPasswordElement.value === '') {
     firstPasswordElement.style.borderColor = defaultColor;
     secondPasswordElement.style.borderColor = defaultColor;
   }
 }
 
-//move focus from second input if both inputs are empty
-function moveFocus(){
-  if (firstPasswordElement.value === "" 
-    && secondPasswordElement.value === ""
-    && document.activeElement === secondPasswordElement){ 
+// move focus from second input if both inputs are empty
+function moveFocus() {
+  if (
+    firstPasswordElement.value === '' &&
+    secondPasswordElement.value === '' &&
+    document.activeElement === secondPasswordElement
+  ) {
     firstPasswordElement.focus();
   }
 }
 
-function storeFormData(){
+function storeFormData() {
   const user = {
     name: form.name.value,
     email: form.email.value,
@@ -91,16 +102,16 @@ function storeFormData(){
   console.log(user);
 }
 
-function processFormData(e){
+function processFormData(e) {
   e.preventDefault();
   validateInputs();
   handleValidatePassword();
 
-  if (!passwordsMatch){
+  if (!passwordsMatch) {
     alert('Passwords must match');
   }
-  
-  if (areInputsValid && passwordsMatch){
+
+  if (areInputsValid && passwordsMatch) {
     storeFormData();
     console.log('Success (╯•ω•╰)');
   } else {
@@ -108,8 +119,8 @@ function processFormData(e){
   }
 }
 
-termsCheckbox.onchange = function(){
-  if (termsCheckbox.checked){
+termsCheckbox.onchange = () => {
+  if (termsCheckbox.checked) {
     submitBtn.disabled = false;
   } else {
     submitBtn.disabled = true;
@@ -118,11 +129,11 @@ termsCheckbox.onchange = function(){
 
 passwordInputs.forEach((input) => {
   input.addEventListener('focusout', () => {
-    input.setAttribute('type', 'password'); //show password when input is selected
+    input.setAttribute('type', 'password'); // show password when input is selected
     handleEmptyPasswords();
   });
   input.addEventListener('focusin', () => {
-    input.setAttribute('type', 'text'); //hide password when input is not selected
+    input.setAttribute('type', 'text'); // hide password when input is not selected
     handleEmptyPasswords();
     moveFocus();
   });
